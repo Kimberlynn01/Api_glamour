@@ -56,8 +56,8 @@ app.get("/api/category", async (req, res) => {
 
     let categoryRef = admin.database().ref("category");
 
-    if (sort === "1") {
-      categoryRef = categoryRef.orderByChild("id").equalTo(1);
+    if (sort) {
+      categoryRef = categoryRef.orderByChild("id").equalTo(parseInt(sort));
     }
 
     const snapshot = await categoryRef.once("value");
