@@ -16,7 +16,7 @@ app.post("/api/category", async (req, res) => {
     const { name, images } = req.body;
 
     if (!nam || !images) {
-      return res.status(400).json({ error: "Data produk tidak lengkap" });
+      return res.status(400).json({ error: "Data category tidak lengkap" });
     }
 
     const categoryRef = admin.database().ref("category");
@@ -46,7 +46,7 @@ app.post("/api/category", async (req, res) => {
     });
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).json({ error: "Terjadi kesalahan saat menambahkan produk" });
+    res.status(500).json({ error: "Terjadi kesalahan saat menambahkan category" });
   }
 });
 
@@ -65,7 +65,7 @@ app.get("/api/category", async (req, res) => {
     res.status(200).json(categoryArray);
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).json({ error: "Terjadi kesalahan saat mengambil data produk" });
+    res.status(500).json({ error: "Terjadi kesalahan saat mengambil data category" });
   }
 });
 
