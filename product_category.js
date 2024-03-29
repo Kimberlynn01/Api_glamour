@@ -15,7 +15,7 @@ app.post("/api/category", async (req, res) => {
   try {
     const { name, images } = req.body;
 
-    if (!nam || !images) {
+    if (!name || !images) {
       return res.status(400).json({ error: "Data category tidak lengkap" });
     }
 
