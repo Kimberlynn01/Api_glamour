@@ -52,13 +52,7 @@ app.post("/api/category", async (req, res) => {
 
 app.get("/api/category", async (req, res) => {
   try {
-    const { sort } = req.query;
-
-    let categoryRef = admin.database().ref("category");
-
-    if (sort) {
-      categoryRef = categoryRef.orderByChild("id").equalTo(parseInt(sort));
-    }
+    const categoryRef = admin.database().ref("category");
 
     const snapshot = await categoryRef.once("value");
     const categoryList = snapshot.val();
@@ -75,23 +69,32 @@ app.get("/api/category", async (req, res) => {
   }
 });
 
-// app.get("/api/category", async (req, res) => {
-//   try {
-//     const categoryRef = admin.database().ref("category");
+app.get("/api/product/categoryId", async (req, res) => {
+  try {
+    const { categoryId } = req.query;
 
-//     const snapshot = await categoryRef.once("value");
-//     const categoryList = snapshot.val();
+    if (!categoryId) {
+      return res.status(400).json({ error: "Parameter categoryId tidak ditemukan" });
+    }
 
-//     const categoryArray = Object.keys(categoryList || {}).map((key) => ({
-//       id: key,
-//       ...categoryList[key],
-//     }));
+    const productsRef = admin.database().ref("products");
+    const snapshot = await productsRef.orderByChild("category/id").equalTo(parseInt(categoryId)).once("value");
+    const productsList = snapshot.val();
 
-//     res.status(200).json(categoryArray);
-//   } catch (error) {
-//     console.error("Error:", error);
-//     res.status(500).json({ error: "Terjadi kesalahan saat mengambil data category" });
-//   }
-// });
+    if (!productsList) {
+      return res.status(404).json({ error: "Produk tidak ditemukan" });
+    }
+
+    const productsArray = Object.keys(productsList).map((key) => ({
+      id: key,
+      ...productsList[key],
+    }));
+
+    res.status(200).json(productsArray);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Terjadi kesalahan saat mengambil data produk" });
+  }
+});
 
 module.exports = app;

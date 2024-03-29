@@ -4,6 +4,7 @@
   "routes": [
     { "src": "/api/products", "dest": "product.js" },
     { "src": "/api/category", "dest": "product_category.js" },
+    { "src": "/api/product/categoryId", "dest": "product_category.js" },
     { "src": "/api(.*)", "dest": "server.js" }
   ]
 }
