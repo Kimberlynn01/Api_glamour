@@ -69,7 +69,7 @@ app.get("/api/category", async (req, res) => {
   }
 });
 
-app.get("/api/product/sort", async (req, res) => {
+app.get("/api/products/sort", async (req, res) => {
   try {
     const { categoryId } = req.query;
 
