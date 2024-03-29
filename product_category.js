@@ -13,9 +13,9 @@ app.use(express.json());
 
 app.post("/api/category", async (req, res) => {
   try {
-    const { name, images } = req.body;
+    const { name, image } = req.body;
 
-    if (!name || !images) {
+    if (!name || !image) {
       return res.status(400).json({ error: "Data category tidak lengkap" });
     }
 
@@ -32,7 +32,7 @@ app.post("/api/category", async (req, res) => {
     await newCategoryRef.set({
       id: nextId,
       name: name,
-      images: images,
+      image: image,
       createdAt: currentDate,
       updatedAt: currentDate,
     });
@@ -40,7 +40,7 @@ app.post("/api/category", async (req, res) => {
     res.status(201).json({
       id: nextId,
       name: name,
-      images: images,
+      image: image,
       createdAt: currentDate,
       updatedAt: currentDate,
     });
