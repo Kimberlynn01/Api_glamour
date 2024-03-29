@@ -52,7 +52,6 @@ app.post("/api/products", async (req, res) => {
 });
 
 app.get("/api/products", async (req, res) => {
-  res.send("API???");
   try {
     const productsRef = admin.database().ref("products");
 
