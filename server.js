@@ -1,4 +1,3 @@
-const { createServer } = require("http");
 const express = require("express");
 const app = express();
 const admin = require("firebase-admin");
@@ -16,8 +15,4 @@ admin.initializeApp({
   databaseURL: "https://api-glamour-app-default-rtdb.asia-southeast1.firebasedatabase.app/",
 });
 
-const server = createServer(app);
-
-server.listen(process.env.PORT || 3000, () => {
-  console.log(`Server berjalan di port ${process.env.PORT || 3000}`);
-});
+module.exports = app;
