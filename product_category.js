@@ -69,4 +69,29 @@ app.get("/api/category", async (req, res) => {
   }
 });
 
+app.get("/api/category/sort", async (req, res) => {
+  try {
+    const { sort } = req.query;
+
+    let categoryRef = admin.database().ref("category");
+
+    if (sort === "id") {
+      categoryRef = categoryRef.orderByChild("id");
+    }
+
+    const snapshot = await categoryRef.once("value");
+    const categoryList = snapshot.val();
+
+    const categoryArray = Object.keys(categoryList || {}).map((key) => ({
+      id: key,
+      ...categoryList[key],
+    }));
+
+    res.status(200).json(categoryArray);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Terjadi kesalahan saat mengambil data category" });
+  }
+});
+
 module.exports = app;
