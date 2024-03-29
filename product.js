@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-app.post("/products", async (req, res) => {
+app.post("/api/products", async (req, res) => {
   try {
     const { title, price, description, category, images } = req.body;
 
@@ -51,7 +51,7 @@ app.post("/products", async (req, res) => {
   }
 });
 
-app.get("/products", async (req, res) => {
+app.get("/api/products", async (req, res) => {
   try {
     const productsRef = admin.database().ref("products");
 
