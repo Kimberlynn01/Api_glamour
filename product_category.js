@@ -50,7 +50,7 @@ app.post("/api/category", async (req, res) => {
   }
 });
 
-app.get("/api/products", async (req, res) => {
+app.get("/api/category", async (req, res) => {
   try {
     const categoryRef = admin.database().ref("category");
 
