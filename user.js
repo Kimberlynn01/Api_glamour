@@ -35,6 +35,7 @@ app.post("/api/user", async (req, res) => {
       email: email,
       phoneNumber: phoneNumber,
       password: password,
+      isLoggedn: false,
     });
 
     res.status(201).json({
@@ -43,6 +44,7 @@ app.post("/api/user", async (req, res) => {
       email: email,
       phoneNumber: phoneNumber,
       password: password,
+      isLoggedn: false,
     });
   } catch (error) {
     res.status(500).json({ error: "Terjadi kesalahan saat membuat user" });
