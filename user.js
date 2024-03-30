@@ -49,7 +49,7 @@ app.post("/api/user", async (req, res) => {
   }
 });
 
-app.get("/api/user", async (res) => {
+app.get("/api/user", async (req, res) => {
   try {
     const userRef = admin.database().ref("users");
     const snapshot = await userRef.once("value");
