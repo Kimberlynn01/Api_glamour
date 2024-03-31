@@ -14,9 +14,9 @@ app.use(express.json());
 
 app.post("/api/user", async (req, res) => {
   try {
-    const { username, email, phoneNumber, password } = req.body;
+    const { username, email, phoneNumber, password, role } = req.body;
 
-    if (!username || !email || !phoneNumber || !password) {
+    if ((!username || !email || !phoneNumber || !password, role)) {
       return res.status(400).json({ error: "Data users belum lengkap" });
     }
 
@@ -35,6 +35,7 @@ app.post("/api/user", async (req, res) => {
       email: email,
       phoneNumber: phoneNumber,
       password: password,
+      role: "buyer",
       isLoggedn: false,
     });
 
@@ -44,6 +45,7 @@ app.post("/api/user", async (req, res) => {
       email: email,
       phoneNumber: phoneNumber,
       password: password,
+      role: "buyer",
       isLoggedn: false,
     });
   } catch (error) {

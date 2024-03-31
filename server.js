@@ -1,8 +1,19 @@
 const express = require("express");
 const app = express();
 const admin = require("firebase-admin");
+const authenticateJWT = require("./authenticateJWT");
 
 app.use(express.json());
+
+app.use(authenticateJWT);
+
+app.get("/api/protected-route", (req, res) => {
+  res.json({ message: "Protected route accessed successfully", user: req.user });
+});
+
+app.get("/api/public-route", (req, res) => {
+  res.json({ message: "Public route accessed successfully" });
+});
 
 app.get("/api", (req, res) => {
   res.send("Backend API EndPoint By Danu");
