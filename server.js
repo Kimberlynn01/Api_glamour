@@ -12,6 +12,7 @@ admin.initializeApp({
 });
 
 const apiRoutes = require("./api");
+
 app.use("/api/v1", apiRoutes);
 
 app.use((req, res) => {
