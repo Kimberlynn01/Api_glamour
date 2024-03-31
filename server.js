@@ -12,8 +12,10 @@ admin.initializeApp({
 });
 
 const apiRoutes = require("./api");
-app.use(apiRoutes);
+app.use("/api/v1", apiRoutes);
 
-app.get();
+app.use((req, res) => {
+  res.status(404).json({ error: "Endpoint not found" });
+});
 
 module.exports = app;
