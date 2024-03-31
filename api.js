@@ -3,7 +3,8 @@ const router = express.Router();
 
 // Rute untuk endpoint "/products"
 router.get("/products", (req, res) => {
-  res.json({ message: "Get products endpoint" });
+  const products = require("./product");
+  router.use(products);
 });
 
 router.get("/user", (req, res) => {
