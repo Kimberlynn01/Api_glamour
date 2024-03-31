@@ -1,12 +1,6 @@
 const express = require("express");
 const admin = require("firebase-admin");
 
-const serviceAccount = require("./api-glamour-app-firebase-adminsdk-wf5c2-9fbcd7e825.json");
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://api-glamour-app-default-rtdb.asia-southeast1.firebasedatabase.app/",
-});
-
 const app = express();
 
 app.use(express.json());
