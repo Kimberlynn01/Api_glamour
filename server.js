@@ -4,10 +4,6 @@ const admin = require("firebase-admin");
 
 app.use(express.json());
 
-app.get("/api", (req, res) => {
-  res.send("Backend API EndPoint By Danu");
-});
-
 const serviceAccount = require("./api-glamour-app-firebase-adminsdk-wf5c2-9fbcd7e825.json");
 
 admin.initializeApp({
