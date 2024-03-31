@@ -11,6 +11,18 @@ admin.initializeApp({
   databaseURL: "https://api-glamour-app-default-rtdb.asia-southeast1.firebasedatabase.app/",
 });
 
+const authenticateMiddleware = (req, res, next) => {
+  const { auth } = req.query;
+
+  if (auth === "2006") {
+    next();
+  } else {
+    res.status(403).json({ error: "Access Denied" });
+  }
+};
+
+app.use("/api/v1", authenticateMiddleware);
+
 app.use("/api/v1", route);
 
 app.use((req, res) => {

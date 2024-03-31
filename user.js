@@ -1,18 +1,11 @@
 const express = require("express");
 const admin = require("firebase-admin");
 
-const serviceAccount = require("./api-glamour-app-firebase-adminsdk-wf5c2-9fbcd7e825.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://api-glamour-app-default-rtdb.asia-southeast1.firebasedatabase.app/",
-});
-
 const app = express();
 
 app.use(express.json());
 
-app.post("/api/user", async (req, res) => {
+app.post("/", async (req, res) => {
   try {
     const { username, email, phoneNumber, password, role } = req.body;
 
@@ -53,7 +46,7 @@ app.post("/api/user", async (req, res) => {
   }
 });
 
-app.get("/api/user", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const userRef = admin.database().ref("users");
     const snapshot = await userRef.once("value");
