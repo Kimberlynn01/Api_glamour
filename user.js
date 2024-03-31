@@ -28,7 +28,7 @@ app.post("/", async (req, res) => {
       email: email,
       phoneNumber: phoneNumber,
       password: password,
-      role: "buyer",
+      role: role,
       isLoggedn: false,
     });
 
@@ -38,7 +38,7 @@ app.post("/", async (req, res) => {
       email: email,
       phoneNumber: phoneNumber,
       password: password,
-      role: "buyer",
+      role: role,
       isLoggedn: false,
     });
   } catch (error) {
