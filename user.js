@@ -9,7 +9,7 @@ app.post("/", async (req, res) => {
   try {
     const { username, email, phoneNumber, password, role } = req.body;
 
-    if ((!username || !email || !phoneNumber || !password, role)) {
+    if ((!username || !email || !phoneNumber || !password, !role)) {
       return res.status(400).json({ error: "Data users belum lengkap" });
     }
 
