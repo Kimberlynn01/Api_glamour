@@ -2,10 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 // Rute untuk endpoint "/products"
-router.get("/products", (req, res) => {
-  const products = require("./product");
-  router.use(products);
-});
+const productsRouter = require("./product");
+
+router.use("/products", productsRouter);
 
 router.get("/user", (req, res) => {
   res.json({ message: "Get user endpoint" });
