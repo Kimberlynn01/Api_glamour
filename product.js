@@ -11,6 +11,18 @@ const app = express();
 
 app.use(express.json());
 
+const authenticateMiddleware = (req, res, next) => {
+  const { auth } = req.query;
+
+  if (auth === "2006") {
+    next();
+  } else {
+    res.status(403).json({ error: "Access Denied" });
+  }
+};
+
+app.use("/api/products", authenticateMiddleware);
+
 app.post("/api/products", async (req, res) => {
   try {
     const { title, price, description, category, images } = req.body;
