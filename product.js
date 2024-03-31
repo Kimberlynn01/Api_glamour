@@ -21,9 +21,9 @@ const authenticateMiddleware = (req, res, next) => {
   }
 };
 
-app.use("/api/products", authenticateMiddleware);
+app.use("/api/v1/products", authenticateMiddleware);
 
-app.post("/api/products", async (req, res) => {
+app.post("/api/v1/products", async (req, res) => {
   try {
     const { title, price, description, category, images } = req.body;
 
@@ -63,7 +63,7 @@ app.post("/api/products", async (req, res) => {
   }
 });
 
-app.get("/api/products", async (req, res) => {
+app.get("/api/v1/products", async (req, res) => {
   try {
     const productsRef = admin.database().ref("products");
 

@@ -1,5 +1,11 @@
 {
   "version": 2,
   "builds": [{ "src": "*.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/api/v1/(products|user|category)(.*)", "dest": "server.js" }]
+  "routes": [
+    { "src": "/api/v1/products", "dest": "product.js" },
+    { "src": "/api/v1/category", "dest": "product_category.js" },
+    { "src": "/api/v1/products/sort", "dest": "product_category.js" },
+    { "src": "/api/v1/user", "dest": "user.js" },
+    { "src": "/api/v1(.*)", "dest": "server.js" }
+  ]
 }
