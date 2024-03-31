@@ -11,4 +11,9 @@ admin.initializeApp({
   databaseURL: "https://api-glamour-app-default-rtdb.asia-southeast1.firebasedatabase.app/",
 });
 
+const apiRoutes = require("./api");
+app.use(apiRoutes);
+
+app.get();
+
 module.exports = app;
