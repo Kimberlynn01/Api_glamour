@@ -7,9 +7,9 @@ app.use(express.json());
 
 app.post("/", async (req, res) => {
   try {
-    const { title, price, description, category, images } = req.body;
+    const { title, nameUser, price, description, category, images } = req.body;
 
-    if (!title || !price || !description || !category || !images) {
+    if (!title || !nameUser || !price || !description || !category || !images) {
       return res.status(400).json({ error: "Data produk tidak lengkap" });
     }
 
@@ -25,6 +25,7 @@ app.post("/", async (req, res) => {
     await newProductRef.set({
       id: nextId,
       title: title,
+      nameUser: nameUser,
       price: price,
       description: description,
       category: category,
@@ -34,6 +35,7 @@ app.post("/", async (req, res) => {
     res.status(201).json({
       id: nextId,
       title: title,
+      nameUser: nameUser,
       price: price,
       description: description,
       category: category,
