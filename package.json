@@ -13,6 +13,8 @@
   "dependencies": {
     "express": "^4.19.2",
     "firebase": "^10.10.0",
-    "firebase-admin": "^12.0.0"
+    "firebase-admin": "^12.0.0",
+    "socket.io": "^4.7.5",
+    "ws": "^8.16.0"
   }
 }
